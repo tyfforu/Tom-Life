@@ -1,0 +1,34 @@
+name: 健身增肌笔记库
+description: 健身、增肌、睾酮提升相关知识整理
+
+filters:
+  and:
+    - file.inFolder("30 - 笔记和灵感/健身增肌")
+    - 'file.ext == "md"'
+    - 'file.name != "base"'
+
+properties:
+  title:
+    displayName: 标题
+  date:
+    displayName: 日期
+  tags:
+    displayName: 标签
+
+formulas:
+  tags_str: 'if(tags, tags.join(", "), "")'
+
+views:
+  - type: cards
+    name: 健身笔记卡片
+    order:
+      - title
+      - date
+
+  - type: table
+    name: 表格视图
+    order:
+      - file.name
+      - title
+      - date
+      - formula.tags_str

@@ -1,0 +1,36 @@
+name: 读书学习库
+description: 读书笔记、学习方法、金融书单、嵌入式学习整理
+
+filters:
+  and:
+    - file.inFolder("30 - 笔记和灵感/读书学习")
+    - 'file.ext == "md"'
+    - 'file.name != "base"'
+
+properties:
+  title:
+    displayName: 标题
+  date:
+    displayName: 日期
+  source:
+    displayName: 来源
+
+formulas:
+  is_book: 'if(file.name.contains("书") || file.name.contains("投资"), "📚 书籍", "📝 笔记")'
+
+views:
+  - type: cards
+    name: 读书学习卡片
+    order:
+      - title
+      - date
+      - formula.is_book
+
+  - type: table
+    name: 表格视图
+    order:
+      - file.name
+      - title
+      - date
+      - source
+      - formula.is_book

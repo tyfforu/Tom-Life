@@ -1,0 +1,35 @@
+name: 想做的事 & 购物清单
+description: wanna do 清单和购物列表
+
+filters:
+  and:
+    - file.inFolder("30 - 笔记和灵感/wanna do")
+    - 'file.ext == "md"'
+    - 'file.name != "base"'
+
+properties:
+  title:
+    displayName: 标题
+  date:
+    displayName: 日期
+  tags:
+    displayName: 标签
+
+formulas:
+  type: 'if(file.name.contains("buy"), "🛒 购物", "📋 计划")'
+
+views:
+  - type: table
+    name: Wanna Do 总览
+    order:
+      - file.name
+      - title
+      - date
+      - formula.type
+
+  - type: cards
+    name: 卡片视图
+    order:
+      - title
+      - date
+      - formula.type

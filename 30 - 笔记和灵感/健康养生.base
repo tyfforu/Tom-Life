@@ -1,0 +1,37 @@
+name: 健康养生笔记库
+description: 健康习惯、饮食、中医、每日必做的系统整理
+
+filters:
+  and:
+    - file.inFolder("30 - 笔记和灵感/健康养生")
+    - 'file.ext == "md"'
+    - 'file.name != "base"'
+
+properties:
+  title:
+    displayName: 标题
+  date:
+    displayName: 日期
+  tags:
+    displayName: 标签
+  source:
+    displayName: 来源
+
+formulas:
+  tags_str: 'if(tags, tags.join(", "), "")'
+
+views:
+  - type: cards
+    name: 健康笔记卡片
+    order:
+      - title
+      - date
+      - formula.tags_str
+
+  - type: table
+    name: 表格视图
+    order:
+      - file.name
+      - title
+      - date
+      - source
