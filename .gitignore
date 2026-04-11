@@ -1,0 +1,20 @@
+# Git 本身
+.git/
+
+# Obsidian 配置（个人隐私）
+.obsidian/
+.claude/
+
+# 图片（避免仓库过大）
+图片/
+
+# 临时文件
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+
+# 压缩包（如果有）
+*.zip
+*.rar
+*.7z
